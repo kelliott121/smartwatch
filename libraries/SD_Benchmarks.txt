@@ -1,0 +1,31 @@
+==========SD==========
+Type any character to start
+File size 5MB
+Buffer size 100 bytes
+Starting write test.  Please wait up to a minute
+Write 103.87 KB/sec
+Maximum latency: 371424 usec, Minimum Latency: 84 usec, Avg Latency: 954 usec
+
+Starting read test.  Please wait up to a minute
+Read 208.81 KB/sec
+Maximum latency: 3764 usec, Minimum Latency: 80 usec, Avg Latency: 472 usec
+
+Done
+
+==========SD FAT==========
+Type any character to start
+Free RAM: 1571
+Type is FAT32
+File size 5MB
+Buffer size 100 bytes
+Starting write test.  Please wait up to a minute
+Write 141.00 KB/sec
+Maximum latency: 66168 usec, Minimum Latency: 84 usec, Avg Latency: 700 usec
+
+Starting read test.  Please wait up to a minute
+Read 302.96 KB/sec
+Maximum latency: 2348 usec, Minimum Latency: 84 usec, Avg Latency: 323 usec
+
+Done
+
+
