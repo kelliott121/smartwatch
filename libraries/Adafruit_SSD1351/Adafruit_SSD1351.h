@@ -84,6 +84,7 @@ class Adafruit_SSD1351  : public virtual Adafruit_GFX {
   void drawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color);
   void drawFastVLine(int16_t x, int16_t y, int16_t h, uint16_t color);
   void fillScreen(uint16_t fillcolor);
+  void writePixels(uint16_t x0, uint16_t y0, uint16_t w, uint16_t h, uint16_t* pixels);
 
   void invert(boolean);
   // commands

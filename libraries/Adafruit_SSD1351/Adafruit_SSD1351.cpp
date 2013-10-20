@@ -173,6 +173,50 @@ void Adafruit_SSD1351::fillRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, 
   }
 }
 
+void Adafruit_SSD1351::writePixels(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t* pixels) 
+{	
+
+  // Bounds check
+  if ((x >= SSD1351WIDTH) || (y >= SSD1351HEIGHT))
+	return;
+
+  // Y bounds check
+  if (y+h > SSD1351HEIGHT)
+  {
+    h = SSD1351HEIGHT - y - 1;
+  }
+
+  // X bounds check
+  if (x+w > SSD1351WIDTH)
+  {
+    w = SSD1351WIDTH - x - 1;
+  }
+  
+  /*
+  Serial.print(x); Serial.print(", ");
+  Serial.print(y); Serial.print(", ");
+  Serial.print(w); Serial.print(", ");
+  Serial.print(h); Serial.println(", ");
+*/
+
+  // set location
+  writeCommand(SSD1351_CMD_SETCOLUMN);
+  writeData(x);
+  writeData(x+w-1);
+  writeCommand(SSD1351_CMD_SETROW);
+  writeData(y);
+  writeData(y+h-1);
+  // fill!
+  writeCommand(SSD1351_CMD_WRITERAM);  
+
+  for (uint16_t y1=0; y1 < h; y1++) {
+    for (uint16_t x1=0; x1 < w; x1++){
+      writeData(pixels[x1 + (y1 * w)] >> 8);
+      writeData(pixels[x1 + (y1 * w)]);
+    }
+  }
+}
+
 void Adafruit_SSD1351::drawFastVLine(int16_t x, int16_t y, 
 				 int16_t h, uint16_t color) {
   // Bounds check
