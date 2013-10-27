@@ -51,8 +51,8 @@ void setup(void) {
   char x = 11;
   char y = 0;
   char side = 16;
-  char speedX = 4;
-  char speedY = 4;
+  char speedX = 2;
+  char speedY = 2;
   while (1){
     //Serial.print("X: ");
     //Serial.println(x, DEC);

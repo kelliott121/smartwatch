@@ -53,6 +53,8 @@ class Adafruit_GFX : public Print {
     setCursor(int16_t x, int16_t y),
     setTextColor(uint16_t c),
     setTextColor(uint16_t c, uint16_t bg),
+    setTextStart(uint8_t x, uint8_t y),
+    setTextEnd(uint8_t x, uint8_t y),
     setTextSize(uint8_t s),
     setTextWrap(boolean w),
     setRotation(uint8_t r);
@@ -79,7 +81,11 @@ class Adafruit_GFX : public Print {
     textcolor, textbgcolor;
   uint8_t
     textsize,
-    rotation;
+    rotation,
+    textStartX,
+    textStartY,
+    textEndX,
+    textEndY;
   boolean
     wrap; // If set, 'wrap' text at right edge of display
 };

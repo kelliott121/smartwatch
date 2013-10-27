@@ -49,6 +49,10 @@ Adafruit_GFX::Adafruit_GFX(int16_t w, int16_t h):
   textsize  = 1;
   textcolor = textbgcolor = 0xFFFF;
   wrap      = true;
+  textStartX = 0;
+  textStartY = 0;
+  textEndX = 128;
+  textEndY = 128;
 }
 
 // Draw a circle outline
@@ -376,9 +380,9 @@ void Adafruit_GFX::write(uint8_t c) {
   } else {
     drawChar(cursor_x, cursor_y, c, textcolor, textbgcolor, textsize);
     cursor_x += textsize*6;
-    if (wrap && (cursor_x > (_width - textsize*6))) {
+    if (wrap && (cursor_x > (textEndX - textsize*6))) {
       cursor_y += textsize*8;
-      cursor_x = 0;
+      cursor_x = textStartX;
     }
   }
 #if ARDUINO >= 100
@@ -434,6 +438,18 @@ void Adafruit_GFX::setTextColor(uint16_t c) {
   // For 'transparent' background, we'll set the bg 
   // to the same as fg instead of using a flag
   textcolor = textbgcolor = c;
+}
+
+ void Adafruit_GFX::setTextStart(uint8_t x, uint8_t y)
+{
+  textStartX = x;
+  textStartY = y;
+}
+
+ void Adafruit_GFX::setTextEnd(uint8_t x, uint8_t y)
+{
+  textEndX = x;
+  textEndY = y;
 }
 
 void Adafruit_GFX::setTextColor(uint16_t c, uint16_t b) {
