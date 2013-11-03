@@ -49,7 +49,7 @@ void setup()
   Serial.println("Starting");
   
   tft.fillScreen(BLACK);
-  bmpDraw("bluetoot.bmp", 0, 0);
+  bmpDraw("bt_con.bmp", 0, 0);
   bmpDraw("battery.bmp", 112, 0);
   bmpDraw("facebook.bmp", 0, 16);
   bmpDraw("gmail.bmp", 0, 32);
