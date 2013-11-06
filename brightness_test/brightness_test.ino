@@ -29,16 +29,29 @@ void setup()
   digitalWrite(cs, HIGH);
 
   tft.begin();
-  tft.fillScreen(WHITE);
+  tft.fillScreen(BLACK);
+
+  delay(10000);
 }
 
 uint8_t val = 0;
 void loop()
 {
-  setBrightness(val);
-  val++;
-  Serial.println(val, BIN);
-  delay(500);
+  
+  for (byte brightness = 0; brightness < 16; brightness++)
+  {
+    setBrightness(brightness);
+    for (byte height = 0; height <= 128; height+=32)
+    {
+      tft.fillScreen(BLACK);
+      tft.fillRect(0, 0, 128, height, WHITE);
+      Serial.print((height * 100)/128, DEC);
+      Serial.print("% ");
+      Serial.print(brightness, DEC);
+      Serial.println("/16");
+      delay(10000);
+    }
+  }
 }
 
 void setBrightness(uint8_t val)
@@ -46,5 +59,7 @@ void setBrightness(uint8_t val)
   tft.writeCommand(SSD1351_CMD_CONTRASTMASTER);
   tft.writeData(val);
 }
+
+
 
 
